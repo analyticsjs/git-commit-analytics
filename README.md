@@ -30,16 +30,16 @@ You need to create a `config.json` at the same folder with the program, and writ
 
 ```json
 {
-  "lang": "zh",
+  "lang": "en",
   "authors": [
     "chengpeiquan"
   ],
   "dateRange": [
     "2021-12-01",
-    "2021-12-31"
+    "2022-01-31"
   ],
   "repos": [
-    "D:\\Project\\node-project\\git-commit-analytics"
+    "D:\\Git\\git-commit-analytics"
   ],
   "format": {
     "git-commit-analytics": "Git Commit Analytics"
