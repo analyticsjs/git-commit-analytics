@@ -27,7 +27,8 @@ jobs:
       # 安装依赖并打包
       - name: Install and build
         run: |
-          yarn global add pkg @semantic-release/changelog @semantic-release/git
+          yarn global add pkg
+          yarn add -D @semantic-release/changelog @semantic-release/git
           yarn install
           yarn build
       # 压缩构建后的文件
