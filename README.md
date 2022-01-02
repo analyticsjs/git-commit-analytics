@@ -9,3 +9,9 @@ Developing…
 See: [The Latest Release](https://github.com/analyticsjs/git-commit-analytics/releases/latest)
 
 查看: [最新的一个发布版本](https://github.com/analyticsjs/git-commit-analytics/releases/latest)
+
+## Change Log
+
+You can look at the [CHANGELOG](./CHANGELOG.md) to understand the content of each update. 
+
+你可以查看 [更新记录](./CHANGELOG.md) 去了解每个版本的更新内容。

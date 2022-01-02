@@ -19,32 +19,32 @@ jobs:
       # 文件改名，加入版本号
       - name: Rename Files
         run: |
-          mv Git_Commit_Analytics_win.zip Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
-          mv Git_Commit_Analytics_mac.zip Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
+          mv Git_Commit_Analytics_win.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
+          mv Git_Commit_Analytics_mac.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
       # 上传 Win 版本的压缩包到 release
       - name: Upload To Release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip application/zip
+          args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       # 删除 Win 版本的压缩包
       - name: Remove Files
         uses: JesseTG/rm@v1.0.2
         with:
-          path: Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
+          path: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
       # 上传 Mac 版本的压缩包到 release
       - name: Upload To Release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip application/zip
+          args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       # 删除 Mac 版本的压缩包
       - name: Remove Files
         uses: JesseTG/rm@v1.0.2
         with:
-          path: Git_Commit_Analytics_v${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
+          path: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
       # 提交代码
       - name: Save Changes
         run: |
