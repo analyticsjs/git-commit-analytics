@@ -1,0 +1,22 @@
+{
+  "branches": "main",
+  "ci": false,
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "Git_Log_Analytics_win.zip",
+          "Git_Log_Analytics_mac.zip",
+          "package.json",
+          "CHANGELOG.md"
+        ],
+        "message": "release: v${nextRelease.version}\n\n${nextRelease.notes}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}

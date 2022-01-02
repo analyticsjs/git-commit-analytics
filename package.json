@@ -1,0 +1,26 @@
+{
+  "name": "git-log-analytics",
+  "version": "0.0.0",
+  "description": "A tool to analyze your git repository's commit log. I can help you generate daily/weekly or longer work reports.",
+  "main": "src/index.js",
+  "author": "chengpeiquan",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node src/index.js",
+    "build": "npm run build:win && npm run build:mac",
+    "build:win": "pkg src/index.js -t win -o dist/Git_Log_Analytics_win.exe",
+    "build:mac": "pkg src/index.js -t macos -o dist/Git_Log_Analytics_mac.dmg",
+    "build:dev": "pkg src/index.js -t win -o Git_Log_Analytics_dev.exe",
+    "format": "prettier --write .",
+    "backup": "git add . && git commit -m \"chore: save the coding progress\" && git push"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.7"
+  }
+}
