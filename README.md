@@ -1,14 +1,10 @@
-<p align='center'>
-  <img src="https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2022/01/20220103015147.png" alt="git-commit-analytics" />
-</p>
-<br>
-<br>
-
-## Features
+# git-commit-analytics
 
 A tool to analyze your git repository's commit log. It can help you generate daily/weekly or longer work reports.
 
 一个可以分析你的 Git 仓库 commit 记录的工具。它可以帮你生成一份工作日报 / 周报，或者你需要的更长时间范围的工作报告。
+
+![git-commit-analytics](https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2022/01/20220103021254.gif)
 
 ## Download
 
