@@ -1,33 +1,42 @@
-module.exports = function (commit) {
-  // 提交类型
+/**
+ * Format Commit
+ * @param {object} commit - A commit object
+ * @param {boolean} isEN - Check whether the language is English.
+ * @returns
+ *  type: the commit type
+ *  category: the text about commit type
+ *  msg: the commit message
+ */
+module.exports = function ({ commit, isEN }) {
+  // Get the text according to the type
   let type = 'chore'
-  let category = '代码优化'
+  let category = isEN ? 'Chores' : '其他优化'
   if (commit.startsWith('feat')) {
     type = 'feat'
-    category = '功能开发'
+    category = isEN ? 'Features' : '功能开发'
   }
   if (commit.startsWith('fix')) {
     type = 'fix'
-    category = 'BUG修复'
+    category = isEN ? 'Bug Fixes' : 'BUG修复'
   }
   if (commit.startsWith('docs')) {
     type = 'docs'
-    category = '完善文档'
+    category = isEN ? 'Documentation' : '完善文档'
   }
   if (commit.startsWith('style')) {
     type = 'style'
-    category = '优化样式'
+    category = isEN ? 'Optimized Style' : '优化样式'
   }
   if (commit.startsWith('refactor')) {
     type = 'refactor'
-    category = '代码重构'
+    category = isEN ? 'Refactored' : '代码重构'
   }
   if (commit.startsWith('test')) {
     type = 'test'
-    category = '测试用例'
+    category = isEN ? 'Test Cases' : '测试用例'
   }
 
-  // 截取提交内容
+  // Extract messages from the commit log
   let msg = commit
   const index = commit.indexOf(':')
   if (index > -1) {

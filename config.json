@@ -1,19 +1,17 @@
 {
+  "lang": "en",
   "authors": [
-    "程沛权",
     "chengpeiquan"
   ],
   "dateRange": [
-    "2021-01-01",
-    "2021-12-31"
+    "2021-12-01",
+    "2022-01-31"
   ],
   "repos": [
-    "D:\\Project\\npm-project\\vue-picture-cropper",
-    "D:\\Project\\npm-project\\vite-plugin-banner"
+    "D:\\Git\\git-commit-analytics"
   ],
   "format": {
-    "vue-picture-cropper": "Vue Picture Cropper",
-    "vite-plugin-banner": "Vite Plugin Banner"
+    "git-commit-analytics": "Git Commit Analytics"
   },
   "includes": [
     "feat",

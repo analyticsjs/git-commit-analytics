@@ -10,23 +10,32 @@ function start() {
   try {
     const config = getConfig()
     if (!config) return
-    const { authors, dateRange, repos, format, includes, excludes } = config
+    const { lang, authors, dateRange, repos, format, includes, excludes } =
+      config
+    const isEN = lang === 'en'
     const startTime = dateRange[0]
     const endTime = dateRange[1]
     const result = {}
-    console.log(`正在分析 ${repos.length} 个仓库的 Log ，请耐心等待…`)
 
-    // 创建正则
+    console.log(
+      isEN
+        ? `Analyzing the Log of ${repos.length} repo${
+            repos.length > 1 ? 's' : ''
+          }, please be patient...`
+        : `正在分析 ${repos.length} 个仓库的 Log ，请耐心等待…`
+    )
+
+    // Create regular expression
     const reg = {
       author: new RegExp(authors.join('|'), 'gim'),
       include: new RegExp(includes.join('|'), 'gim'),
       exclude: new RegExp(excludes.join('|'), 'gim'),
     }
 
-    // 遍历仓库
+    // The reports use repo to split paragraphs
     const allLogs = []
     repos.forEach((repo) => {
-      // 获取仓库名称
+      // Get the repo name
       const repoName = getRepoName(repo, format)
       if (!result[repoName]) {
         result[repoName] = {
@@ -40,7 +49,7 @@ function start() {
         }
       }
 
-      // 要执行的命令
+      // Create CMDs
       const cmds = [
         `cd ${resolve(repo)}`,
         'git pull',
@@ -48,7 +57,7 @@ function start() {
       ]
       const cmd = cmds.join(' && ')
 
-      // 获取Git操作记录
+      // Get commit records from git repo
       const res = execSync(cmd)
       const str = String(res)
       const logs = str
@@ -57,16 +66,16 @@ function start() {
         .filter((log) => reg.include.test(log))
         .filter((log) => !reg.exclude.test(log))
 
-      // 合并记录
+      // Meger all logs
       logs.forEach((log) => allLogs.push(`${repoName}|||${log}`))
     })
 
-    // 去重
+    // Deduplicate
     const uniqueLogs = [...new Set(allLogs)]
 
-    // 提取目标数据
+    // Get target data
     const targetList = uniqueLogs
-      .map((log) => formatLog(log))
+      .map((log) => formatLog({ log, isEN }))
       .filter((log) => {
         const { unix } = log
         return unix >= startTime && unix <= endTime
@@ -75,14 +84,14 @@ function start() {
         return a.unix - b.unix
       })
 
-    // 归类
+    // Classify
     targetList.forEach((item) => {
       const { repo, type } = item
       result[repo][type].push(item)
     })
 
-    // 写入报告
-    saveReport(result)
+    // Save
+    saveReport({ result, isEN })
   } catch (e) {
     confirmExit(e)
   }

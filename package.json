@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "author": "chengpeiquan",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "node src/index.js",
     "build": "npm run build:win && npm run build:mac",
