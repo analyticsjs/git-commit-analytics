@@ -66,7 +66,7 @@ The configuration items are described as follows:
 配置项说明如下：
 
 key|type|description
-:-:|:-:|:-:
+:-:|:-:|:--
 lang|string|Set program default language, support `en` (English) and `zh` (Simplified Chinese).<br>设置软件的默认语言，支持 `en` （英语）和 `zh` （简体中文）。
 authors|string[]|Filter the author name of commits, support multiple author names, for you may have different names in different repos.<br>筛选 commit 的作者名称，支持多个作者名称，用于你在不同的仓库可能有不同的名字。
 dateRange|[string, string]|Fill in [start date, end date], support the legal time format, and count from the start date `00:00:00` to the end date `23:59:59`.<br>填写 [开始日期， 结束日期] ， 支持合法的时间格式，会从开始日期的 `00:00:00` 统计到截止日期的 `23:59:59` 。
@@ -78,6 +78,30 @@ excludes|string[]|In the statistical results, exclude commit messages that conta
 Among them, `authors` / `includes` / `excludes` will be created as regular expressions to match data.
 
 其中，`authors` / `includes` / `excludes` 会创建为正则表达式去匹配数据。
+
+## Report
+
+The report file will be generated in `markdown` syntax (probably the most common format for developer?) and saved as a file in `.txt` format (probably the most compatible format?).
+
+报告文件会以 `markdown` 语法生成（可能是对程序员最通用的格式？），并以 `.txt` 格式的文件保存（可能是兼容性最好的格式？）。
+
+The project name will be classified as the second-level title, and 7 types of commit prefixes will be classified as the third-level title:
+
+会以项目名称作为二级标题归类，以 7 个类型的 commit 前缀作为三级标题归类：
+
+type|description
+:-:|:-:
+feat|Features<br>功能开发
+fix|Bug Fixes<br>BUG修复
+docs|Documentation<br>完善文档
+style|Optimized Style<br>优化样式
+refactor|Refactored<br>代码重构
+test|Test Cases<br>测试用例
+chore|Chores<br>其他优化
+
+You can click [Commit message and Change log writing guide](https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html) to learn how to standardize the git commit.
+
+你可以点击 [Commit message 和 Change log 编写指南](https://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html) 学习如何规范化提交 Git Commit 。
 
 ## License
 
