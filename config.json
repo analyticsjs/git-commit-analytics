@@ -9,11 +9,13 @@
     "2021-12-31"
   ],
   "repos": [
+    "D:\\Project\\node-project\\git-commit-analytics",
     "D:\\Project\\npm-project\\vue-picture-cropper",
     "D:\\Project\\npm-project\\vue-baidu-analytics",
     "D:\\Project\\npm-project\\vue-cnzz-analytics"
   ],
   "format": {
+    "git-commit-analytics": "Git Commit Analytics",
     "vue-picture-cropper": "Vue Picture Cropper",
     "vue-baidu-analytics": "Vue Baidu Analytics",
     "vue-cnzz-analytics": "Vue CNZZ Analytics"
