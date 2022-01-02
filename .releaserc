@@ -9,8 +9,8 @@
       "@semantic-release/git",
       {
         "assets": [
-          "Git_Log_Analytics_win.zip",
-          "Git_Log_Analytics_mac.zip",
+          "Git_Commit_Analytics_win.zip",
+          "Git_Commit_Analytics_mac.zip",
           "package.json",
           "CHANGELOG.md"
         ],

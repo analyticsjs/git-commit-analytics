@@ -17,7 +17,7 @@ jobs:
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
       # 更新缓存
-      - name: Cache dependencies
+      - name: Cache Dependencies
         uses: actions/cache@v1
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
@@ -33,8 +33,8 @@ jobs:
       # 压缩构建后的文件
       - name: Compress
         run: |
-          zip --junk-paths Git_Log_Analytics_win dist/Git_Log_Analytics_win.exe
-          zip --junk-paths Git_Log_Analytics_mac dist/Git_Log_Analytics_mac.dmg
+          zip --junk-paths Git_Commit_Analytics_win dist/Git_Commit_Analytics_win.exe
+          zip --junk-paths Git_Commit_Analytics_mac dist/Git_Commit_Analytics_mac.dmg
       # 发版
       - name: Release
         id: create_release
