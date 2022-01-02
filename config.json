@@ -1,4 +1,5 @@
 {
+  "lang": "zh",
   "authors": [
     "程沛权",
     "chengpeiquan"
@@ -9,11 +10,13 @@
   ],
   "repos": [
     "D:\\Project\\npm-project\\vue-picture-cropper",
-    "D:\\Project\\npm-project\\vite-plugin-banner"
+    "D:\\Project\\npm-project\\vue-baidu-analytics",
+    "D:\\Project\\npm-project\\vue-cnzz-analytics"
   ],
   "format": {
     "vue-picture-cropper": "Vue Picture Cropper",
-    "vite-plugin-banner": "Vite Plugin Banner"
+    "vue-baidu-analytics": "Vue Baidu Analytics",
+    "vue-cnzz-analytics": "Vue CNZZ Analytics"
   },
   "includes": [
     "feat",

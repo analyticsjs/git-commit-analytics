@@ -1,5 +1,11 @@
 const { resolve, sep } = require('path')
 
+/**
+ * Get Repo Name
+ * @param {*} repoDir - The item in configuration `config.repos`
+ * @param {*} format - The configuration `config.format`
+ * @returns The repository name
+ */
 module.exports = function (repoDir, format) {
   const arr = resolve(repoDir).split(sep)
   if (!arr.length) {

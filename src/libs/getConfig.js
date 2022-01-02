@@ -4,28 +4,49 @@ const { cwd } = require('process')
 const dayjs = require('dayjs')
 const confirmExit = require('./confirmExit')
 
+/**
+ * Get Config
+ * @description Format content from configuration file and check validity.
+ * @tips The `dateRange` will be transformed from `string[]` to `number[]`
+ * @returns An object from the configuration file
+ */
 module.exports = function () {
+  let isEN = true
+
   try {
+    // Read content from configuration file
     const configFile = resolve(`${cwd()}/config.json`)
     const configStr = readFileSync(configFile)
     if (!configStr) {
       return null
     }
 
-    // 格式化配置
     const config = JSON.parse(configStr)
     const { dateRange } = config
 
-    // 校验数据
+    // Check validity
     const keys = Object.keys(config)
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i]
       const value = config[key]
 
-      // 格式化是个对象
+      // Check language, Set the default language to English
+      if (key === 'lang') {
+        if (!['en', 'zh'].includes(value)) {
+          config['lang'] = 'en'
+        }
+      }
+      isEN = config['lang'] === 'en'
+
+      // Check object
       if (key === 'format') {
         if (Object.prototype.toString.call(value) !== '[object Object]') {
-          confirmExit(`${key} 必须是一个 { [key: string]: string } 对象`)
+          confirmExit({
+            msg: isEN
+              ? `${key} must be an object as { [key: string]: string }`
+              : `${key} 必须是一个 { [key: string]: string } 对象`,
+            isEN,
+          })
           return null
         }
 
@@ -34,25 +55,46 @@ module.exports = function () {
             Object.hasOwnProperty.call(value, k) &&
             typeof value[k] !== 'string'
           ) {
-            confirmExit(`${key} 的 ${k} 的值必须是一个 string 字符串`)
+            confirmExit({
+              msg: isEN
+                ? `The value of ${k} of ${key} must be a string`
+                : `${key} 的 ${k} 的值必须是一个 string 字符串`,
+              isEN,
+            })
             return null
           }
         }
       }
-      // 其他都是数组
-      else {
+
+      // Check array
+      if (
+        ['authors', 'dateRange', 'repos', 'includes', 'excludes'].includes(key)
+      ) {
         if (!Array.isArray(value)) {
-          confirmExit(`${key} 必须是一个 string[] 数组`)
+          confirmExit({
+            msg: isEN
+              ? `${key} must be a string[] array`
+              : `${key} 必须是一个 string[] 数组`,
+            isEN,
+          })
           return null
         }
         if (['authors', 'repos'].includes(key) && !value.length) {
-          confirmExit(`${key} 不能为空`)
+          confirmExit({
+            msg: isEN ? `${key} cannot be empty` : `${key} 不能为空`,
+            isEN,
+          })
           return null
         }
         if (value.length) {
           for (let e = 0; e < value.length; e++) {
             if (typeof value[e] !== 'string') {
-              confirmExit(`${key} 的每个 item 都必须是 string 格式`)
+              confirmExit({
+                msg: isEN
+                  ? `Each item of ${key} must be a string`
+                  : `${key} 的每个 item 都必须是 string 格式`,
+                isEN,
+              })
               return null
             }
           }
@@ -60,9 +102,14 @@ module.exports = function () {
       }
     }
 
-    // 处理起止日期
+    // Handle start date and end date, transform to timestamp
     if (dateRange.length && dateRange.length !== 2) {
-      confirmExit(`dateRange 只能有 2 个值，[开始日期, 结束日期]`)
+      confirmExit({
+        msg: isEN
+          ? `dateRange can only have 2 values, [start date, end date]`
+          : `dateRange 只能有 2 个值，[开始日期, 结束日期]`,
+        isEN,
+      })
       return null
     }
     let startTime = dayjs().startOf('day').unix() * 1000
@@ -75,7 +122,10 @@ module.exports = function () {
 
     return config
   } catch (e) {
-    confirmExit(e)
+    confirmExit({
+      msg: e,
+      isEN,
+    })
     return null
   }
 }
