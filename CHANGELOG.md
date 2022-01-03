@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.1.0...v1.2.0) (2022-01-03)
+
+
+### Features
+
+* change the disk path when repo and program are on different disks ([7335d34](https://github.com/analyticsjs/git-commit-analytics/commit/7335d34f44d5d4c093b85820313a159ff8cb5aa8))
+
 # [1.1.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.0.1...v1.1.0) (2022-01-02)
 
 
