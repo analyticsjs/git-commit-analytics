@@ -55,6 +55,15 @@ function start() {
         'git pull',
         `git log --pretty=format:"%an|||%ae|||%s|||'%h|||%ad"`,
       ]
+
+      // Change the disk path when repo and program are on different disks
+      const curDiskSymbol = process.argv0.split(':')[0]
+      if (!String(repo).startsWith(curDiskSymbol)) {
+        const diskSymbol = String(repo).split(':')[0]
+        cmds.unshift(`${diskSymbol}:`)
+      }
+
+      // Gel full command
       const cmd = cmds.join(' && ')
 
       // Get commit records from git repo
