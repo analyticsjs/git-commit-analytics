@@ -19,9 +19,20 @@
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.5.1"
+    "lint-staged": "11.1.2",
+    "prettier": "^2.5.1",
+    "yorkie": "^2.0.0"
   },
   "dependencies": {
     "dayjs": "^1.10.7"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write ."
+    ]
   }
 }

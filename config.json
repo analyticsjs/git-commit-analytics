@@ -1,30 +1,11 @@
 {
   "lang": "en",
-  "authors": [
-    "chengpeiquan"
-  ],
-  "dateRange": [
-    "2021-12-01",
-    "2022-01-31"
-  ],
-  "repos": [
-    "D:\\Git\\git-commit-analytics"
-  ],
+  "authors": ["chengpeiquan"],
+  "dateRange": ["2021-12-01", "2022-01-31"],
+  "repos": ["D:\\Git\\git-commit-analytics"],
   "format": {
     "git-commit-analytics": "Git Commit Analytics"
   },
-  "includes": [
-    "feat",
-    "fix",
-    "docs",
-    "style",
-    "refactor",
-    "test",
-    "chore"
-  ],
-  "excludes": [
-    "typo",
-    "backup",
-    "progress"
-  ]
+  "includes": ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
+  "excludes": ["typo", "backup", "progress"]
 }

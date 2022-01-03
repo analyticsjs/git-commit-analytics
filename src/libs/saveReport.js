@@ -36,7 +36,7 @@ module.exports = function ({ result, isEN }) {
           // Categories that has been written
           const categories = []
 
-          list = repoResult[t]
+          const list = repoResult[t]
           list.forEach((item, index) => {
             const { repo, category, msg } = item
 
