@@ -27,9 +27,9 @@ function start() {
 
     // Create regular expression
     const reg = {
-      author: new RegExp(authors.join('|'), 'gim'),
-      include: new RegExp(includes.join('|'), 'gim'),
-      exclude: new RegExp(excludes.join('|'), 'gim'),
+      author: new RegExp(authors.join('|'), 'im'),
+      include: new RegExp(includes.join('|'), 'im'),
+      exclude: new RegExp(excludes.join('|'), 'im'),
     }
 
     // The reports use repo to split paragraphs

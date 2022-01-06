@@ -12,6 +12,8 @@
     "build:win": "pkg src/index.js -t win -o dist/Git_Commit_Analytics_win.exe",
     "build:mac": "pkg src/index.js -t macos -o dist/Git_Commit_Analytics_mac.dmg",
     "build:dev": "pkg src/index.js -t win -o Git_Commit_Analytics_dev.exe",
+    "test": "jest --no-cache",
+    "lint": "eslint src --ext .js,.ts",
     "format": "prettier --write .",
     "backup": "git add . && git commit -m \"chore: save the coding progress\" && git push"
   },
@@ -21,6 +23,7 @@
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.7",
     "lint-staged": "11.1.2",
     "prettier": "^2.5.1",
     "yorkie": "^2.0.0"
