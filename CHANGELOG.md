@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/analyticsjs/git-commit-analytics/compare/v1.2.0...v1.2.1) (2022-01-06)
+
+
+### Bug Fixes
+
+* incorrect regular expression hit rate ([363c997](https://github.com/analyticsjs/git-commit-analytics/commit/363c9978634448be38469f7140e618e6096e86d7))
+
 # [1.2.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.1.0...v1.2.0) (2022-01-03)
 
 
