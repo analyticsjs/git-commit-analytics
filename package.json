@@ -13,6 +13,7 @@
     "build:mac": "pkg src/index.js -t macos -o dist/Git_Commit_Analytics_mac.dmg",
     "build:dev": "pkg src/index.js -t win -o Git_Commit_Analytics_dev.exe",
     "test": "jest --no-cache",
+    "lint": "eslint src --ext .js,.ts",
     "format": "prettier --write .",
     "backup": "git add . && git commit -m \"chore: save the coding progress\" && git push"
   },
