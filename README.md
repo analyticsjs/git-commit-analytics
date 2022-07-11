@@ -71,7 +71,7 @@ key|type|description
 :-:|:-:|:--
 lang|string|Set program default language, support `en` (English) and `zh` (Simplified Chinese).<br>设置软件的默认语言，支持 `en` （英语）和 `zh` （简体中文）。
 authors|string[]|Filter the author name of commits, support multiple author names, for you may have different names in different repos.<br>筛选 commit 的作者名称，支持多个作者名称，用于你在不同的仓库可能有不同的名字。
-dateRange|[string, string]|Fill in [start date, end date], support the legal time format, and count from the start date `00:00:00` to the end date `23:59:59`.<br>填写 [开始日期， 结束日期] ， 支持合法的时间格式，会从开始日期的 `00:00:00` 统计到截止日期的 `23:59:59` 。
+dateRange|[string, string]|Fill in [start date, end date], support the legal time format, and count from the start date `00:00:00` to the end date `23:59:59`(If not configured, the default day to run the program).<br>填写 [开始日期， 结束日期] ， 支持合法的时间格式，会从开始日期的 `00:00:00` 统计到截止日期的 `23:59:59` （如果不配置则默认运行程序的当天）。
 repos|string[]|The Git repo folder on your computer, need to be switched to the branch you want to count.<br>你电脑里的 Git 仓库文件夹，需要提前切换到你要统计的分支。
 format|{ [key: string]: string }|Format your folder name as the project name.<br>格式化你的文件夹名称为项目名。
 includes|string[]|The commit message prefix to be included in the statistics.<br>要纳入统计的 commit message 前缀。
