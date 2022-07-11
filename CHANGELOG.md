@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/analyticsjs/git-commit-analytics/compare/v1.3.0...v1.3.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* republish ([c0b372d](https://github.com/analyticsjs/git-commit-analytics/commit/c0b372d54b0bbecb6eca7ed025be206e1087195e))
+
 # [1.3.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.2.1...v1.3.0) (2022-07-11)
 
 
