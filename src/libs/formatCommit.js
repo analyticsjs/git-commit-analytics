@@ -47,8 +47,9 @@ module.exports = function ({ commit, isEN }) {
 
   // Get the commit scope
   const action = commit.slice(0, index)
-  const scope = action.replace(/(.*)\((.+)\)/, '$2')
-  if (scope) {
+  const matched = action.match(/(?<=\().*(?=\))/g)
+  if (Array.isArray(matched) && matched.length) {
+    const scope = matched[0]
     msg = `${scope}: ${msg}`
   }
 
