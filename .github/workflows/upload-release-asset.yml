@@ -24,7 +24,7 @@ jobs:
           mv Git_Commit_Analytics_win.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
           mv Git_Commit_Analytics_mac.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
       # 上传 Win 版本的压缩包到 release
-      - name: Upload To Release
+      - name: Upload Windows File To Release
         uses: JasonEtco/upload-to-release@master
         with:
           args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip application/zip
@@ -36,7 +36,7 @@ jobs:
         with:
           path: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
       # 上传 Mac 版本的压缩包到 release
-      - name: Upload To Release
+      - name: Upload Mac File To Release
         uses: JasonEtco/upload-to-release@master
         with:
           args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip application/zip
