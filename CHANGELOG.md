@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.2.1...v1.3.0) (2022-07-11)
+
+
+### Features
+
+* support scope commit message ([c828da1](https://github.com/analyticsjs/git-commit-analytics/commit/c828da1d429d6669e6b749036cd8b029e0ece2f4))
+
 ## [1.2.1](https://github.com/analyticsjs/git-commit-analytics/compare/v1.2.0...v1.2.1) (2022-01-06)
 
 
