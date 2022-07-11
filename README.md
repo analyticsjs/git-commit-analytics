@@ -24,7 +24,7 @@ Create and fill in your configuration file, and then run the program to get your
 
 创建并填写你的配置文件，然后运行程序，即可获得你的工作报告。
 
-## Configuration
+## Configuration File
 
 You need to create a `config.json` at the same folder with the program, and write the content in the following format.
 
