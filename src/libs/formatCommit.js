@@ -37,10 +37,19 @@ module.exports = function ({ commit, isEN }) {
   }
 
   // Extract messages from the commit log
-  let msg = commit
+  let msg = commit.trim()
+
+  // Get the commit message
   const index = commit.indexOf(':')
   if (index > -1) {
-    msg = commit.slice(index + 1)
+    msg = commit.slice(index + 1).trim()
+  }
+
+  // Get the commit scope
+  const action = commit.slice(0, index)
+  const scope = action.replace(/(.*)\((.+)\)/, '$2')
+  if (scope) {
+    msg = `${scope}: ${msg}`
   }
 
   return {
