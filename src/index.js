@@ -79,7 +79,7 @@ function start() {
       logs.forEach((log) => allLogs.push(`${repoName}|||${log}`))
     })
 
-    // Deduplicate
+    // Deduplicate Logs
     const uniqueLogs = [...new Set(allLogs)]
 
     // Get target data
@@ -95,7 +95,13 @@ function start() {
 
     // Classify
     targetList.forEach((item) => {
-      const { repo, type } = item
+      const { repo, type, msg } = item
+
+      // Filter duplicate messages
+      const msgs = result[repo][type].map((i) => i.msg)
+      if (msgs.includes(msg)) return
+
+      // Add log record
       result[repo][type].push(item)
     })
 
