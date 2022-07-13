@@ -40,19 +40,19 @@ module.exports = function ({ result, isEN }) {
           list.forEach((item, index) => {
             const { repo, category, msg } = item
 
-            // Repo name as h2
+            // Repo name as `<h2 />`
             if (!titles.includes(repo)) {
               appendFileSync(reportFile, `## ${repo}\n\n`)
               titles.push(repo)
             }
 
-            // Category as h3
+            // Category as `<h3 />`
             if (!categories.includes(category)) {
               appendFileSync(reportFile, `### ${category}\n`)
               categories.push(category)
             }
 
-            // Commit message as list item
+            // Commit message as `<li />`
             appendFileSync(reportFile, `${index + 1}. ${msg}\n`)
 
             if (index === list.length - 1) {
