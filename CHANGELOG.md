@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.3.1...v1.4.0) (2022-07-13)
+
+
+### Features
+
+* filter duplicate messages when generate report ([206f3db](https://github.com/analyticsjs/git-commit-analytics/commit/206f3dbc00739d0d4adfaa6c99b2047fa479ab1a))
+
 ## [1.3.1](https://github.com/analyticsjs/git-commit-analytics/compare/v1.3.0...v1.3.1) (2022-07-11)
 
 
