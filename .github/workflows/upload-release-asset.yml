@@ -10,7 +10,7 @@ jobs:
     steps:
       # 获取源码
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # 需要指定目标分支
           ref: main
