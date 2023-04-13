@@ -28,4 +28,4 @@ jobs:
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: semantic-release
+        run: pnpm exec semantic-release
