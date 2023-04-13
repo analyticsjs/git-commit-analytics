@@ -15,21 +15,22 @@
     "test": "jest --no-cache",
     "lint": "eslint src --ext .js,.ts",
     "format": "prettier --write .",
+    "up": "npx npm-check-updates -u",
     "backup": "git add . && git commit -m \"chore: backup\" && git push",
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
-    "eslint": "^8.5.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.4.7",
-    "lint-staged": "11.1.2",
-    "pkg": "^5.7.0",
-    "prettier": "^2.5.1",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "lint-staged": "13.2.1",
+    "pkg": "^5.8.1",
+    "prettier": "^2.8.7",
     "simple-git-hooks": "^2.8.1"
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.11.7"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm exec lint-staged --concurrent false",
