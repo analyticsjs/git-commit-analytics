@@ -1,3 +1,4 @@
+const { platform } = require('os')
 const { resolve } = require('path')
 const { execSync } = require('child_process')
 const getConfig = require('./libs/getConfig')
@@ -50,21 +51,24 @@ function start() {
       }
 
       // Create CMDs
-      const cmds = [
+      const commands = [
         `cd ${resolve(repo)}`,
         'git pull',
         `git log --pretty=format:"%an|||%ae|||%s|||'%h|||%ad"`,
       ]
 
+      // Windows may have multiple disk partitions
       // Change the disk path when repo and program are on different disks
-      const curDiskSymbol = process.argv0.split(':')[0]
-      if (!String(repo).startsWith(curDiskSymbol)) {
-        const diskSymbol = String(repo).split(':')[0]
-        cmds.unshift(`${diskSymbol}:`)
+      if (platform() === 'win32') {
+        const curDiskSymbol = process.argv0.split(':')[0]
+        if (!String(repo).startsWith(curDiskSymbol)) {
+          const diskSymbol = String(repo).split(':')[0]
+          commands.unshift(`${diskSymbol}:`)
+        }
       }
 
       // Gel full command
-      const cmd = cmds.join(' && ')
+      const cmd = commands.join(' && ')
 
       // Get commit records from git repo
       const res = execSync(cmd)
@@ -75,7 +79,7 @@ function start() {
         .filter((log) => reg.include.test(log))
         .filter((log) => !reg.exclude.test(log))
 
-      // Meger all logs
+      // Merge all logs
       logs.forEach((log) => allLogs.push(`${repoName}|||${log}`))
     })
 

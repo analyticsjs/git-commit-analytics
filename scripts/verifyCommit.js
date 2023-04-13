@@ -1,8 +1,10 @@
-// Invoked on the commit-msg git hook by yorkie.
+// Invoked on the commit-msg git hook by simple-git-hooks.
 
-const fs = require('fs')
-const msgPath = process.env.GIT_PARAMS
-const msg = fs.readFileSync(msgPath, 'utf-8').trim()
+const { readFileSync } = require('fs')
+
+// get $1 from commit-msg script
+const msgPath = process.argv[2]
+const msg = readFileSync(msgPath, 'utf-8').trim()
 
 const commitRE =
   /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
@@ -10,11 +12,15 @@ const commitRE =
 if (!commitRE.test(msg)) {
   console.log()
   console.error(
-    `   ERROR  invalid commit message format.\n\n
-        Proper commit message format is required for automated changelog generation. Examples:\n\n
-          feat(compiler): add 'comments' option\n
-          fix(v-model): handle events on blur (close #28)\n\n
-        See .github/commit-convention.md for more details.\n`
+    `   ERROR
+      invalid commit message format.
+    \n\n` +
+      `  Proper commit message format is required for automated changelog generation. Examples:\n\n` +
+      `    feat(compiler): add 'comments' option\n` +
+      `
+        fix(v-model): handle events on blur (close #28)
+      \n\n` +
+      `  See .github/commit-convention.md for more details.\n`
   )
   process.exit(1)
 }

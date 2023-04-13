@@ -15,7 +15,8 @@
     "test": "jest --no-cache",
     "lint": "eslint src --ext .js,.ts",
     "format": "prettier --write .",
-    "backup": "git add . && git commit -m \"chore: backup\" && git push"
+    "backup": "git add . && git commit -m \"chore: backup\" && git push",
+    "prepare": "simple-git-hooks"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.1",
@@ -27,14 +28,14 @@
     "lint-staged": "11.1.2",
     "pkg": "^5.7.0",
     "prettier": "^2.5.1",
-    "yorkie": "^2.0.0"
+    "simple-git-hooks": "^2.8.1"
   },
   "dependencies": {
     "dayjs": "^1.10.7"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged",
-    "commit-msg": "node scripts/verifyCommit.js"
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec node scripts/verifyCommit $1"
   },
   "lint-staged": {
     "*.js": [
