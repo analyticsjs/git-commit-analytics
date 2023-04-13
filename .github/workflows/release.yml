@@ -16,7 +16,6 @@ jobs:
       - name: Install and build
         run: |
           npm add -g pnpm
-          pnpm add -D @semantic-release/changelog @semantic-release/git
           pnpm install
           pnpm build
       # 压缩构建后的文件
@@ -29,4 +28,4 @@ jobs:
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: npx semantic-release
+        run: semantic-release

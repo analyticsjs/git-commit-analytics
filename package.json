@@ -20,6 +20,8 @@
     "prepare": "simple-git-hooks"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -27,6 +29,7 @@
     "lint-staged": "13.2.1",
     "pkg": "^5.8.1",
     "prettier": "^2.8.7",
+    "semantic-release": "^21.0.1",
     "simple-git-hooks": "^2.8.1"
   },
   "dependencies": {
