@@ -4,3 +4,4 @@ node_modules
 *.rar
 config.json
 report.txt
+dist
