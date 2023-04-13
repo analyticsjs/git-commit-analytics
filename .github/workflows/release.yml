@@ -12,25 +12,13 @@ jobs:
       # 获取源码
       - name: Checkout
         uses: actions/checkout@v2
-      # 查找yarn缓存
-      - name: Get yarn cache path
-        id: yarn-cache
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      # 更新缓存
-      - name: Cache Dependencies
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
       # 安装依赖并打包
       - name: Install and build
         run: |
-          yarn global add pkg
-          yarn add -D @semantic-release/changelog @semantic-release/git
-          yarn install
-          yarn build
+          npm add -g pnpm
+          pnpm add -D @semantic-release/changelog @semantic-release/git
+          pnpm install
+          pnpm build
       # 压缩构建后的文件
       - name: Compress
         run: |
