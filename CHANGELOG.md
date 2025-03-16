@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/analyticsjs/git-commit-analytics/compare/v1.5.0...v1.5.1) (2025-03-16)
+
+
+### Bug Fixes
+
+* trigger ci ([7bc71ce](https://github.com/analyticsjs/git-commit-analytics/commit/7bc71ce0c7f3d4b9acd38cf86aa76fbbf785abd4))
+
 # [1.5.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.4.1...v1.5.0) (2025-03-16)
 
 
