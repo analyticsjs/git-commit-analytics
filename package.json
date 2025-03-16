@@ -2,6 +2,7 @@
   "name": "git-commit-analytics",
   "version": "0.0.0",
   "description": "A tool to analyze your git repository's commit log. I can help you generate daily/weekly or longer work reports.",
+  "type": "module",
   "main": "src/index.js",
   "author": "chengpeiquan",
   "license": "MIT",
@@ -13,31 +14,28 @@
     "build:mac": "pkg src/index.js -t macos -o dist/Git_Commit_Analytics_mac.dmg",
     "build:dev": "pkg src/index.js -t win -o Git_Commit_Analytics_dev.exe",
     "test": "jest --no-cache",
-    "lint": "eslint src --ext .js,.ts",
+    "lint": "eslint src",
+    "lint:inspector": "npx @eslint/config-inspector",
     "format": "prettier --write .",
-    "up": "npx npm-check-updates -u",
+    "up": "npx taze minor -r -f -w -i",
     "backup": "git add . && git commit -m \"chore: backup\" && git push",
-    "prepare": "simple-git-hooks"
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@bassist/commit": "^0.1.1",
+    "@bassist/eslint-config": "^0.1.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "eslint": "^8.38.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint": "^9.22.0",
+    "husky": "^9.1.7",
     "jest": "^29.5.0",
     "lint-staged": "13.2.1",
     "pkg": "^5.8.1",
-    "prettier": "^2.8.7",
-    "semantic-release": "^21.0.1",
-    "simple-git-hooks": "^2.8.1"
+    "prettier": "^3.5.3",
+    "semantic-release": "^21.0.1"
   },
   "dependencies": {
     "dayjs": "^1.11.7"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged --concurrent false",
-    "commit-msg": "pnpm exec node scripts/verifyCommit $1"
   },
   "lint-staged": {
     "*.js": [

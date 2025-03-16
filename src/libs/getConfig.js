@@ -1,16 +1,18 @@
-const { readFileSync } = require('fs')
-const { resolve } = require('path')
-const { cwd } = require('process')
-const dayjs = require('dayjs')
-const confirmExit = require('./confirmExit')
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { cwd } from 'node:process'
+import dayjs from 'dayjs'
+import confirmExit from './confirmExit.js'
 
 /**
  * Get Config
- * @description Format content from configuration file and check validity.
- * @tips The `dateRange` will be transformed from `string[]` to `number[]`
+ *
+ * Format content from configuration file and check validity.
+ *
  * @returns An object from the configuration file
+ * @tips The `dateRange` will be transformed from `string[]` to `number[]`
  */
-module.exports = function () {
+export default function () {
   let isEN = true
 
   try {
@@ -33,10 +35,10 @@ module.exports = function () {
       // Check language, Set the default language to English
       if (key === 'lang') {
         if (!['en', 'zh'].includes(value)) {
-          config['lang'] = 'en'
+          config.lang = 'en'
         }
       }
-      isEN = config['lang'] === 'en'
+      isEN = config.lang === 'en'
 
       // Check object
       if (key === 'format') {
@@ -50,11 +52,8 @@ module.exports = function () {
           return null
         }
 
-        for (const k in value) {
-          if (
-            Object.hasOwnProperty.call(value, k) &&
-            typeof value[k] !== 'string'
-          ) {
+        for (const [k, v] of Object.entries(value)) {
+          if (typeof v !== 'string') {
             confirmExit({
               msg: isEN
                 ? `The value of ${k} of ${key} must be a string`
