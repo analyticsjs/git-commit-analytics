@@ -1,4 +1,6 @@
-const getConfig = require('../src/libs/getConfig')
+import { describe, expect, test } from 'jest'
+import getConfig from '../src/libs/getConfig'
+
 const config = getConfig()
 const { authors } = config
 const reg = new RegExp(authors.join('|'), 'im')

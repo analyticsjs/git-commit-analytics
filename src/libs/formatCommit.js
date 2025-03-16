@@ -1,13 +1,12 @@
 /**
  * Format Commit
+ *
  * @param {object} commit - A commit object
  * @param {boolean} isEN - Check whether the language is English.
- * @returns
- *  type: the commit type
- *  category: the text about commit type
- *  msg: the commit message
+ * @returns Type: the commit type category: the text about commit type msg: the
+ *   commit message
  */
-module.exports = function ({ commit, isEN }) {
+export default function ({ commit, isEN }) {
   // Get the text according to the type
   let type = 'chore'
   let category = isEN ? 'Chores' : '其他优化'

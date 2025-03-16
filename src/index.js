@@ -1,11 +1,11 @@
-const { platform } = require('os')
-const { resolve } = require('path')
-const { execSync } = require('child_process')
-const getConfig = require('./libs/getConfig')
-const formatLog = require('./libs/formatLog')
-const getRepoName = require('./libs/getRepoName')
-const saveReport = require('./libs/saveReport')
-const confirmExit = require('./libs/confirmExit')
+import { execSync } from 'node:child_process'
+import { platform } from 'node:os'
+import { resolve } from 'node:path'
+import confirmExit from './libs/confirmExit.js'
+import formatLog from './libs/formatLog.js'
+import getConfig from './libs/getConfig.js'
+import getRepoName from './libs/getRepoName.js'
+import saveReport from './libs/saveReport.js'
 
 function start() {
   try {
@@ -23,7 +23,7 @@ function start() {
         ? `Analyzing the Log of ${repos.length} repo${
             repos.length > 1 ? 's' : ''
           }, please be patient...`
-        : `正在分析 ${repos.length} 个仓库的 Log ，请耐心等待…`
+        : `正在分析 ${repos.length} 个仓库的 Log ，请耐心等待…`,
     )
 
     // Create regular expression

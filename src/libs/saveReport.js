@@ -1,14 +1,15 @@
-const { writeFileSync, appendFileSync } = require('fs')
-const { resolve } = require('path')
-const { cwd } = require('process')
-const confirmExit = require('./confirmExit')
+import { appendFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { cwd } from 'node:process'
+import confirmExit from './confirmExit.js'
 
 /**
  * Save Report
+ *
  * @param {object} result - The result transformed from config
  * @param {boolean} isEN - Check whether the language is English.
  */
-module.exports = function ({ result, isEN }) {
+export default function ({ result, isEN }) {
   if (Object.prototype.toString.call(result) !== '[object Object]') {
     confirmExit({
       msg: isEN
@@ -27,40 +28,33 @@ module.exports = function ({ result, isEN }) {
   const titles = []
 
   // Write new report
-  for (const key in result) {
-    if (Object.hasOwnProperty.call(result, key)) {
-      // 按归类好的仓库数据遍历
-      const repoResult = result[key]
-      for (const t in repoResult) {
-        if (Object.hasOwnProperty.call(repoResult, t)) {
-          // Categories that has been written
-          const categories = []
+  for (const [, repoResult] of Object.entries(result)) {
+    for (const [, list] of Object.entries(repoResult)) {
+      // Categories that have been written
+      const categories = []
 
-          const list = repoResult[t]
-          list.forEach((item, index) => {
-            const { repo, category, msg } = item
+      list.forEach((item, index) => {
+        const { repo, category, msg } = item
 
-            // Repo name as `<h2 />`
-            if (!titles.includes(repo)) {
-              appendFileSync(reportFile, `## ${repo}\n\n`)
-              titles.push(repo)
-            }
-
-            // Category as `<h3 />`
-            if (!categories.includes(category)) {
-              appendFileSync(reportFile, `### ${category}\n`)
-              categories.push(category)
-            }
-
-            // Commit message as `<li />`
-            appendFileSync(reportFile, `${index + 1}. ${msg}\n`)
-
-            if (index === list.length - 1) {
-              appendFileSync(reportFile, `\n`)
-            }
-          })
+        // Repo name as `<h2 />`
+        if (!titles.includes(repo)) {
+          appendFileSync(reportFile, `## ${repo}\n\n`)
+          titles.push(repo)
         }
-      }
+
+        // Category as `<h3 />`
+        if (!categories.includes(category)) {
+          appendFileSync(reportFile, `### ${category}\n`)
+          categories.push(category)
+        }
+
+        // Commit message as `<li />`
+        appendFileSync(reportFile, `${index + 1}. ${msg}\n`)
+
+        if (index === list.length - 1) {
+          appendFileSync(reportFile, `\n`)
+        }
+      })
     }
   }
 

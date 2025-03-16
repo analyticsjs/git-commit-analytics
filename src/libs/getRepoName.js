@@ -1,12 +1,13 @@
-const { resolve, sep } = require('path')
+import { resolve, sep } from 'node:path'
 
 /**
  * Get Repo Name
- * @param {*} repoDir - The item in configuration `config.repos`
- * @param {*} format - The configuration `config.format`
+ *
+ * @param {any} repoDir - The item in configuration `config.repos`
+ * @param {any} format - The configuration `config.format`
  * @returns The repository name
  */
-module.exports = function (repoDir, format) {
+export default function (repoDir, format) {
   const arr = resolve(repoDir).split(sep)
   if (!arr.length) {
     return 'undefined'
