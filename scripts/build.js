@@ -13,10 +13,10 @@ async function buildWin() {
   const OUTPUT_PATH = join(OUTPUT_DIR, WIN_OUTPUT_NAME)
 
   try {
-    console.log(`📦 Creating standalone executable for Windows...`)
+    console.log(`📦 Creating standalone executable for Windows...`, OUTPUT_PATH)
 
     execSync(
-      `node -e "require('fs').copyFileSync(process.execPath, ${OUTPUT_PATH})" `,
+      `node -e "require('fs').copyFileSync(process.execPath, '${OUTPUT_PATH}')" `,
     )
 
     execSync(`signtool remove /s ${OUTPUT_PATH}`)
@@ -40,7 +40,7 @@ async function buildMac() {
   const OUTPUT_PATH = join(OUTPUT_DIR, MAC_OUTPUT_NAME)
 
   try {
-    console.log(`📦 Creating standalone executable for macOS...`)
+    console.log(`📦 Creating standalone executable for macOS...`, OUTPUT_PATH)
 
     execSync(`cp ${NODE_PATH} ${OUTPUT_PATH}`)
 
