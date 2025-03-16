@@ -40,7 +40,6 @@ async function buildWin() {
       { stdio: 'inherit', shell: 'cmd.exe' },
     )
 
-    execSync(`codesign --sign - ${OUTPUT_PATH}`)
     return true
   } catch (error) {
     console.error('❌ Failed to create executable for Windows:', error)
