@@ -8,11 +8,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "node src/index.js",
-    "build": "npm run build:win && npm run build:mac",
-    "build:win": "pkg src/index.js -t win -o dist/Git_Commit_Analytics_win.exe",
-    "build:mac": "pkg src/index.js -t macos -o dist/Git_Commit_Analytics_mac.dmg",
-    "build:dev": "pkg src/index.js -t win -o Git_Commit_Analytics_dev.exe",
+    "dev": "cross-env NODE_ENV=development node ./src/index.js",
+    "build": "cross-env NODE_ENV=production npm run build:cjs && npm run build:sea",
+    "build:cjs": "tsup",
+    "build:sea": "node ./scripts/build.js",
     "test": "jest --no-cache",
     "lint": "eslint src",
     "lint:inspector": "npx @eslint/config-inspector",
@@ -26,13 +25,14 @@
     "@bassist/eslint-config": "^0.1.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.22.0",
     "husky": "^9.1.7",
     "jest": "^29.5.0",
     "lint-staged": "13.2.1",
-    "pkg": "^5.8.1",
     "prettier": "^3.5.3",
-    "semantic-release": "^21.0.1"
+    "semantic-release": "^21.0.1",
+    "tsup": "^8.4.0"
   },
   "dependencies": {
     "dayjs": "^1.11.7"

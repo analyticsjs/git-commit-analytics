@@ -1,7 +1,7 @@
 import { appendFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { cwd } from 'node:process'
 import confirmExit from './confirmExit.js'
+import getBasePath from './getBasePath.js'
 
 /**
  * Save Report
@@ -21,7 +21,7 @@ export default function ({ result, isEN }) {
   }
 
   // Clear the last record
-  const reportFile = resolve(`${cwd()}/report.txt`)
+  const reportFile = resolve(getBasePath(), 'report.txt')
   writeFileSync(reportFile, '')
 
   // Titles that has been written
