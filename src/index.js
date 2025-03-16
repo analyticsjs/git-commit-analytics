@@ -8,6 +8,10 @@ import getRepoName from './libs/getRepoName.js'
 import saveReport from './libs/saveReport.js'
 
 function start() {
+  console.log('')
+  console.log('node version:', execSync('node -v').toString())
+  console.log('')
+
   try {
     const config = getConfig()
     if (!config) return

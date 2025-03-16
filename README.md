@@ -6,11 +6,14 @@ A tool to analyze your git repository's commit log. It can help you generate dai
 
 ![git-commit-analytics](https://cdn.chengpeiquan.com/img/2022/01/20220103021254.gif)
 
-> The `.dmg` package built by CI may be broken (see [#18](https://github.com/analyticsjs/git-commit-analytics/issues/18) ), macOS users can choose to clone the code of this repository and use it through `pnpm i` and `pnpm dev`.
-
 ## 🚀 Download
 
 This is a client tool, so you need to download the program to use it. See: [The Latest Release](https://github.com/analyticsjs/git-commit-analytics/releases/latest) to download.
+
+Note:
+
+- As the latest version uses a new packaging tool, Windows device testing is currently missing. If you cannot run it, please download the [v1.4.1](https://github.com/analyticsjs/git-commit-analytics/releases/tag/v1.4.1) version of the product
+- The latest version fixes the problem that macOS cannot run the build product, but if you still encounter problems, you can choose to clone the code of this repository and use it through `pnpm i` and `pnpm dev`.
 
 ## ⚡ Usage
 

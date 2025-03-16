@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { cwd } from 'node:process'
 import dayjs from 'dayjs'
 import confirmExit from './confirmExit.js'
+import getBasePath from './getBasePath.js'
 
 /**
  * Get Config
@@ -17,7 +17,11 @@ export default function () {
 
   try {
     // Read content from configuration file
-    const configFile = resolve(`${cwd()}/config.json`)
+    const configFile = resolve(getBasePath(), 'config.json')
+    console.log('')
+    console.log('configFile:', configFile)
+    console.log('')
+
     const configStr = readFileSync(configFile)
     if (!configStr) {
       return null

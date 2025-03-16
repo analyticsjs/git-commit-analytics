@@ -5,3 +5,5 @@ node_modules
 config.json
 report.txt
 dist
+temp
+sea-prep.blob

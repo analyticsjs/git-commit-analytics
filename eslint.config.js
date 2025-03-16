@@ -19,7 +19,12 @@ export default defineFlatConfig(
       name: getConfigName('overrides'),
       rules: {
         'no-console': 'off',
+        'require-await': 'off',
       },
+    },
+    {
+      name: getConfigName('ignore'),
+      files: ['**/dist/**', '**/temp/**'],
     },
   ],
   { tailwindcssEnabled: false },

@@ -9,21 +9,17 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      # 获取源码
       - name: Checkout
-        uses: actions/checkout@v3
-      # 安装依赖并打包
+        uses: actions/checkout@v4
       - name: Install and build
         run: |
           npm add -g pnpm
           pnpm install
           pnpm build
-      # 压缩构建后的文件
       - name: Compress
         run: |
           zip --junk-paths Git_Commit_Analytics_win dist/Git_Commit_Analytics_win.exe
-          zip --junk-paths Git_Commit_Analytics_mac dist/Git_Commit_Analytics_mac.dmg
-      # 发版
+          zip --junk-paths Git_Commit_Analytics_mac dist/Git_Commit_Analytics_mac
       - name: Release
         id: create_release
         env:
