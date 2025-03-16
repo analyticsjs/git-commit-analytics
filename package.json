@@ -12,7 +12,7 @@
     "build": "cross-env NODE_ENV=production npm run build:cjs && npm run build:sea",
     "build:cjs": "tsup",
     "build:sea": "node ./scripts/build.js",
-    "test": "jest --no-cache",
+    "test": "jest  --no-cache",
     "lint": "eslint src",
     "lint:inspector": "npx @eslint/config-inspector",
     "format": "prettier --write .",
