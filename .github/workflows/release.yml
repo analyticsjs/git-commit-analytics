@@ -95,7 +95,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: final-assets
-          path: dist/
+          path: ./
+      - name: List Files
+        run: ls -lah
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

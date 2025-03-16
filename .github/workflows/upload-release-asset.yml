@@ -8,47 +8,38 @@ jobs:
   upload-release-asset:
     runs-on: ubuntu-latest
     steps:
-      # 获取源码
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
-          # 需要指定目标分支
           ref: main
-      # 获取最新的 Release 版本号
       - name: Fetch Latest Release Version
         id: fetch-latest-release
         uses: reloc8/action-latest-release-version@1.0.0
-      # 文件改名，加入版本号
-      - name: Rename Files
+      - name: Rename Files with Version
         run: |
           mv Git_Commit_Analytics_win.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
           mv Git_Commit_Analytics_mac.zip Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
-      # 上传 Win 版本的压缩包到 release
       - name: Upload Windows File To Release
         uses: JasonEtco/upload-to-release@master
         with:
           args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      # 删除 Win 版本的压缩包
-      - name: Remove Files
+      - name: Remove Windows Files
         uses: JesseTG/rm@v1.0.2
         with:
           path: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_win.zip
-      # 上传 Mac 版本的压缩包到 release
       - name: Upload Mac File To Release
         uses: JasonEtco/upload-to-release@master
         with:
           args: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      # 删除 Mac 版本的压缩包
-      - name: Remove Files
+      - name: Remove Mac Files
         uses: JesseTG/rm@v1.0.2
         with:
           path: Git_Commit_Analytics_${{ steps.fetch-latest-release.outputs.latest-release }}_mac.zip
-      # 提交代码
-      - name: Save Changes
+      - name: Commit Codes
         run: |
           git config user.email "chengpeiquan@chengpeiquan.com"
           git config user.name "chengpeiquan"
