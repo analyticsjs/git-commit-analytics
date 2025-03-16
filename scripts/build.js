@@ -19,7 +19,9 @@ async function buildWin() {
       `node -e "require('fs').copyFileSync(process.execPath, '${OUTPUT_PATH}')" `,
     )
 
-    execSync(`signtool remove /s ${OUTPUT_PATH}`)
+    try {
+      execSync(`signtool remove /s ${OUTPUT_PATH}`)
+    } catch {}
 
     execSync(
       [
