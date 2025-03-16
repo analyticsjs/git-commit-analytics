@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process'
-import { existsSync, mkdirSync } from 'node:fs'
+import { chmodSync, existsSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 const WIN_OUTPUT_NAME = 'Git_Commit_Analytics_win.exe'
@@ -19,8 +19,19 @@ async function buildWin() {
       `node -e "require('fs').copyFileSync(process.execPath, '${OUTPUT_PATH}')" `,
     )
 
+    if (existsSync(OUTPUT_PATH)) {
+      console.log(`✅  The file was successfully copied to: ${OUTPUT_PATH}`)
+    } else {
+      console.error(`❌  Copy failed, file not found: ${OUTPUT_PATH}`)
+      process.exit(1)
+    }
+
     try {
       execSync(`signtool remove /s ${OUTPUT_PATH}`)
+    } catch {}
+
+    try {
+      chmodSync(OUTPUT_PATH, 0o666)
     } catch {}
 
     execSync(
@@ -46,6 +57,13 @@ async function buildMac() {
     console.log(`📦 Creating standalone executable for macOS...`, OUTPUT_PATH)
 
     execSync(`cp ${NODE_PATH} ${OUTPUT_PATH}`)
+
+    if (existsSync(OUTPUT_PATH)) {
+      console.log(`✅  The file was successfully copied to: ${OUTPUT_PATH}`)
+    } else {
+      console.error(`❌  Copy failed, file not found: ${OUTPUT_PATH}`)
+      process.exit(1)
+    }
 
     execSync(`codesign --remove-signature ${OUTPUT_PATH}`)
 
