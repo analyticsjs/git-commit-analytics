@@ -1,5 +1,5 @@
 import { execSync } from 'node:child_process'
-import { chmodSync, existsSync, mkdirSync } from 'node:fs'
+import { chmodSync, copyFileSync, existsSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 const WIN_OUTPUT_NAME = 'Git_Commit_Analytics_win.exe'
@@ -15,9 +15,7 @@ async function buildWin() {
   try {
     console.log(`📦 Creating standalone executable for Windows...`, OUTPUT_PATH)
 
-    execSync(
-      `node -e "require('fs').copyFileSync(process.execPath, '${OUTPUT_PATH}')" `,
-    )
+    copyFileSync(NODE_PATH, OUTPUT_PATH)
 
     if (existsSync(OUTPUT_PATH)) {
       console.log(`✅  The file was successfully copied to: ${OUTPUT_PATH}`)
@@ -107,6 +105,7 @@ async function build() {
     process.exit(1)
   }
 
+  console.log('🚀 Building standalone executable...', NODE_PATH)
   const buildTask = IS_WIN ? buildWin : buildMac
 
   const isSuccess = await buildTask()
