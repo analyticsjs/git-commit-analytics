@@ -17,7 +17,7 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: |
-          npm add -g pnpm
+          npm add -g pnpm postject
           pnpm install
       - name: Build Windows
         run: pnpm build
@@ -40,7 +40,7 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: |
-          npm add -g pnpm
+          npm add -g pnpm postject
           pnpm install
       - name: Build macOS
         run: pnpm build
