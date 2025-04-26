@@ -36,4 +36,9 @@ pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     // Git repository error messages
     "err_repo_not_found" => "仓库路径不存在或不是目录：{}",
     "err_git_log_failed" => "git log 执行失败，目录：{}\n错误信息：{}",
+
+    // Save report
+    "no_report_generated" => "未生成报告",
+    "err_save_report_failed" => "保存报告失败：{}",
+    "report_saved" => "报告已保存到：{}",
 };
