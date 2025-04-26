@@ -32,4 +32,8 @@ pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
      "commit_category_refactor" => "Refactored",
      "commit_category_test" => "Test Cases",
      "commit_category_chores" => "Chores",
+
+    // Git repository error messages
+    "err_repo_not_found" => "Repo path does not exist or is not a directory: {}",
+    "err_git_log_failed" => "git log failed in directory: {}\nstderr: {}",
 };

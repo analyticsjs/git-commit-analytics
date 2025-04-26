@@ -32,4 +32,8 @@ pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     "commit_category_refactor" => "代码重构",
     "commit_category_test" => "测试用例",
     "commit_category_chores" => "其他优化",
+
+    // Git repository error messages
+    "err_repo_not_found" => "仓库路径不存在或不是目录：{}",
+    "err_git_log_failed" => "git log 执行失败，目录：{}\n错误信息：{}",
 };
