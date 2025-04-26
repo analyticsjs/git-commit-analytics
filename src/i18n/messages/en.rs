@@ -1,7 +1,6 @@
 use phf::phf_map;
 
 pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
-
     // Configuration file I/O
     "config_loaded" => "Configuration loaded successfully",
     "config_not_found" => "Configuration file not found",
@@ -24,4 +23,13 @@ pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     // Keypress
     "wait_for_key" => "Press any key to continue...",
     "press_to_exit" => "Press any key to exit...",
+
+     // Commit categories
+     "commit_category_features" => "Features",
+     "commit_category_bug_fixes" => "Bug Fixes",
+     "commit_category_docs" => "Documentation",
+     "commit_category_style" => "Optimized Style",
+     "commit_category_refactor" => "Refactored",
+     "commit_category_test" => "Test Cases",
+     "commit_category_chores" => "Chores",
 };
