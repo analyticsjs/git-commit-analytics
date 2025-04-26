@@ -1,7 +1,6 @@
 use phf::phf_map;
 
 pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
-
     // Configuration file I/O
     "config_loaded" => "配置加载成功",
     "config_not_found" => "未找到配置文件",
@@ -24,4 +23,13 @@ pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     // Keypress
     "wait_for_key" => "按任意键继续...",
     "press_to_exit" => "按任意键退出...",
+
+    // Commit categories
+    "commit_category_features" => "功能开发",
+    "commit_category_bug_fixes" => "BUG修复",
+    "commit_category_docs" => "完善文档",
+    "commit_category_style" => "优化样式",
+    "commit_category_refactor" => "代码重构",
+    "commit_category_test" => "测试用例",
+    "commit_category_chores" => "其他优化",
 };
