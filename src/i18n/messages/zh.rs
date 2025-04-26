@@ -3,10 +3,7 @@ use phf::phf_map;
 pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     // Configuration file I/O
     "config_loaded" => "配置加载成功",
-    "config_not_found" => "未找到配置文件",
-    "failed_init_config" => "配置初始化失败：{}",
     "failed_print_config" => "打印配置失败：{}",
-    "config_file_not_found" => "配置文件不存在：{}",
     "failed_parse_config" => "解析配置失败：{}",
     "global_config_not_initialized" => "全局配置未初始化",
 
