@@ -1,6 +1,8 @@
 use crate::utils::format_commit::{format_commit, CommitInfo};
 use chrono::{DateTime, Local, NaiveDateTime, TimeZone};
 
+#[allow(dead_code)]
+#[derive(Debug)]
 pub struct LogInfo {
     pub repo: String,
     pub author: String,
@@ -49,21 +51,7 @@ pub fn format_log(log: &str) -> LogInfo {
     let hash = arr.get(4).unwrap_or(&"").replace("'", "#");
     let time_str = arr.get(5).unwrap_or(&"").to_string();
 
-    let (time, unix) = if let Ok(dt) = DateTime::parse_from_rfc2822(&time_str) {
-        let local_dt: DateTime<Local> = dt.with_timezone(&Local);
-        (
-            local_dt.format("%Y-%m-%d %H:%M:%S").to_string(),
-            local_dt.timestamp_millis(),
-        )
-    } else if let Ok(naive_dt) = NaiveDateTime::parse_from_str(&time_str, "%Y-%m-%d %H:%M:%S") {
-        let local_dt = Local.from_local_datetime(&naive_dt).unwrap();
-        (
-            local_dt.format("%Y-%m-%d %H:%M:%S").to_string(),
-            local_dt.timestamp_millis(),
-        )
-    } else {
-        (time_str.clone(), 0)
-    };
+    let (time, unix) = parse_time(&time_str);
 
     let CommitInfo {
         type_name,

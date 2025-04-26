@@ -3,10 +3,7 @@ use phf::phf_map;
 pub static MESSAGES: phf::Map<&'static str, &'static str> = phf_map! {
     // Configuration file I/O
     "config_loaded" => "Configuration loaded successfully",
-    "config_not_found" => "Configuration file not found",
-    "failed_init_config" => "Failed to initialize configuration: {}",
     "failed_print_config" => "Failed to print configuration: {}",
-    "config_file_not_found" => "Config file not found: {}",
     "failed_parse_config" => "Failed to parse config: {}",
     "global_config_not_initialized" => "Global configuration not initialized",
 

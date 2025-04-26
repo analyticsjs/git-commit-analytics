@@ -1,3 +1,4 @@
+#[cfg(not(test))]
 use crate::i18n::t;
 
 /// Commit type and its category
