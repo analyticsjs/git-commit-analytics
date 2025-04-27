@@ -91,6 +91,8 @@ jobs:
         run: |
           ls -lah artifacts/
       - name: Rename Artifacts with Version
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           VERSION=$(npx semantic-release --dry-run | grep -oP 'next release version is \K[0-9]+\.[0-9]+\.[0-9]+')
           echo "Version detected: $VERSION"
