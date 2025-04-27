@@ -1,11 +1,10 @@
+use crate::config::constants::{CATEGORY_ORDER, REPORT_FILE_NAME};
 use crate::i18n::t;
 use crate::utils::format_log::LogInfo;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::Write;
-use std::path::Path;
-
-const CATEGORY_ORDER: &[&str] = &["feat", "fix", "docs", "style", "refactor", "test", "chore"];
+use std::path::{Path, PathBuf};
 
 fn get_category_label(type_name: &str) -> &str {
     match type_name {
@@ -23,7 +22,7 @@ fn get_category_label(type_name: &str) -> &str {
 /// Save Markdown report
 pub fn save_report_markdown(
     result: &HashMap<String, HashMap<String, Vec<LogInfo>>>,
-    path: &str,
+    root_path: &PathBuf,
 ) -> std::io::Result<()> {
     // Check if result is empty
     if result.is_empty() {
@@ -53,10 +52,14 @@ pub fn save_report_markdown(
         md.push('\n');
     }
 
-    let mut file = File::create(Path::new(path))?;
+    let output_path = root_path.join(REPORT_FILE_NAME);
+    let mut file = File::create(Path::new(&output_path))?;
     file.write_all(md.as_bytes())?;
 
-    println!("{}", t("report_saved").replace("{}", path));
+    println!(
+        "{}",
+        t("report_saved").replace("{}", output_path.to_str().unwrap())
+    );
     println!("");
 
     Ok(())

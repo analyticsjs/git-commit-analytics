@@ -2,7 +2,7 @@ mod config;
 mod i18n;
 mod utils;
 
-use std::collections::HashMap;
+use std::{collections::HashMap, path::PathBuf};
 
 use config::{init_config, print_config};
 use i18n::t;
@@ -15,12 +15,12 @@ use utils::{
     save_report::save_report_markdown,
 };
 
-fn run() -> Result<(), Box<dyn std::error::Error>> {
+fn run(root_path: PathBuf) -> Result<(), Box<dyn std::error::Error>> {
     // Initialize global configuration.
     // After initialization, the config is stored in a global OnceLock singleton,
     // and can be accessed from other modules via `config::store::global()`,
     // such as in the i18n module.
-    let config = init_config()?;
+    let config = init_config(&root_path)?;
 
     print_config();
 
@@ -68,8 +68,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
                 .push(log_info);
         }
 
-        // save_report_markdown(&result, "report.txt").expect(t("report_gen_error"));
-        save_report_markdown(&result, "report.txt")?;
+        save_report_markdown(&result, &root_path)?;
 
         exit_on_keypress(Some(t("press_to_exit")));
     }
@@ -78,13 +77,24 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn main() {
-    // Print the current working directory
-    // When the program crashes, it can help locate the cause
+    // Get the APP_ENV environment variable from the startup command (see Makefile.toml).
+    // Since the working directories differ between development and production,
+    // we need to handle them separately.
+    let env = std::env::var("APP_ENV").unwrap_or_else(|_| "production".to_string());
+
+    let root_path = if env == "development" {
+        std::env::current_dir().unwrap()
+    } else {
+        std::env::current_exe()
+            .unwrap()
+            .parent()
+            .unwrap()
+            .to_path_buf()
+    };
+
+    // Print the root path to help locate issues if the program crashes.
     println!("");
-    println!(
-        "Current working directory: \n{}",
-        &std::env::current_dir().unwrap().display()
-    );
+    println!("\nProgram root directory:\n{}", root_path.display());
 
     // Using `?` to propagate errors to `main` causes Rust's default error output
     // (via the `std::process::Termination` trait) to use the Debug format (`{:?}`)
@@ -93,7 +103,7 @@ fn main() {
     //
     // Wrapping the main logic in a separate `run` function and handling errors
     // explicitly with `eprintln!` ensures that the Display output is used.
-    if let Err(e) = run() {
+    if let Err(e) = run(root_path) {
         eprintln!("{}", e); // Use Display format to output the error
         std::process::exit(1);
     }
