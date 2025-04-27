@@ -1,3 +1,5 @@
+use crate::config::constants::CONFIG_FILE_NAME;
+
 #[derive(Debug)]
 pub enum ConfigError {
     FileNotFound,
@@ -13,13 +15,15 @@ impl std::fmt::Display for ConfigError {
             ConfigError::FileNotFound => {
                 write!(
                     f,
-                    "\nPlease make sure there is a config.json file in the program directory."
+                    "\nPlease make sure there is a {} file in the program directory.",
+                    CONFIG_FILE_NAME
                 )
             }
             ConfigError::ParseError => {
                 write!(
                     f,
-                    "\nFailed to parse config.json, please check the file format."
+                    "\nFailed to parse {}, please check the file format.",
+                    CONFIG_FILE_NAME
                 )
             }
             ConfigError::InvalidConfig(msg) => {
