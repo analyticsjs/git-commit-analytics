@@ -1,0 +1,34 @@
+[package]
+authors = ["chengpeiquan <chengpeiquan@chengpeiquan.com>"]
+description = "A tool to analyze your git repository's commit log. I can help you generate daily/weekly or longer work reports."
+edition = "2021"
+license = "MIT"
+name = "git-commit-analytics"
+version = "2.0.0"
+
+[dependencies]
+# Error handling with context
+anyhow = "1.0"
+
+# Date and time handling
+chrono = "0.4"
+
+# Regular expression support
+regex = "1.10"
+
+# Serialization and deserialization
+serde = {version = "1.0", features = ["derive"]}
+
+# JSON parsing and formatting
+serde_json = "1.0"
+
+# Key-value pair storage
+phf = {version = "0.11", features = ["macros"]}
+
+[profile.release]
+# Optimize for size
+codegen-units = 1
+lto = true
+opt-level = 'z'
+panic = 'abort'
+strip = true

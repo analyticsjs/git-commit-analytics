@@ -5,5 +5,12 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.prettier": "always"
   },
-  "cSpell.words": ["codesign", "postject", "reloc", "signtool", "taze"]
+  "cSpell.words": [
+    "chrono",
+    "codesign",
+    "postject",
+    "reloc",
+    "signtool",
+    "taze"
+  ]
 }
