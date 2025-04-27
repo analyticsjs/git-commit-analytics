@@ -9,14 +9,26 @@
       "@semantic-release/git",
       {
         "assets": [
-          "Git_Commit_Analytics_win.zip",
-          "Git_Commit_Analytics_mac.zip",
-          "package.json",
+          "Cargo.toml",
           "CHANGELOG.md"
         ],
         "message": "release: v${nextRelease.version}\n\n${nextRelease.notes}"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "artifacts/git-commit-analytics_win.zip",
+            "label": "Windows Build"
+          },
+          {
+            "path": "artifacts/git-commit-analytics_mac.zip",
+            "label": "macOS Build"
+          }
+        ]
+      }
+    ]
   ]
 }
