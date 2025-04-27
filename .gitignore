@@ -7,3 +7,4 @@ report.txt
 dist
 temp
 sea-prep.blob
+target/**

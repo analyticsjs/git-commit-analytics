@@ -1,0 +1,13 @@
+[tasks.dev]
+args = ["run"]
+command = "cargo"
+env = {APP_ENV = "development"}
+
+[tasks.build]
+args = ["build", "--release"]
+command = "cargo"
+env = {APP_ENV = "production"}
+
+[tasks.clean]
+args = ["clean"]
+command = "cargo"

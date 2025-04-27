@@ -1,4 +1,0 @@
-{
-  "main": "./temp/index.cjs",
-  "output": "sea-prep.blob"
-}
