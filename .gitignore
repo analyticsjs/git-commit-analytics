@@ -2,6 +2,7 @@
 node_modules
 *.exe
 *.rar
+*.zip
 config.json
 report.txt
 dist
