@@ -20,11 +20,11 @@
       {
         "assets": [
           {
-            "path": "artifacts/git-commit-analytics_win.zip",
+            "path": "artifacts/git-commit-analytics_v*_win.zip",
             "label": "Windows Build"
           },
           {
-            "path": "artifacts/git-commit-analytics_mac.zip",
+            "path": "artifacts/git-commit-analytics_v*_mac.zip",
             "label": "macOS Build"
           }
         ]
