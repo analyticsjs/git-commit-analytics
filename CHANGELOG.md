@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/analyticsjs/git-commit-analytics/compare/v2.0.0...v2.0.1) (2025-04-28)
+
+
+### Bug Fixes
+
+* **release:** upload built artifacts with versioned filenames to GitHub assets ([98616fc](https://github.com/analyticsjs/git-commit-analytics/commit/98616fcdb6eff5cb75b4dbc1ae4f2143fe86692d))
+
 # [2.0.0](https://github.com/analyticsjs/git-commit-analytics/compare/v1.5.1...v2.0.0) (2025-04-27)
 
 
