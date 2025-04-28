@@ -2,7 +2,10 @@ mod config;
 mod i18n;
 mod utils;
 
-use std::{collections::HashMap, path::PathBuf};
+use std::{
+    collections::{HashMap, HashSet},
+    path::PathBuf,
+};
 
 use config::{init_config, print_config};
 use i18n::t;
@@ -25,6 +28,9 @@ fn run(root_path: PathBuf) -> Result<(), Box<dyn std::error::Error>> {
     print_config();
 
     let mut result: HashMap<String, HashMap<String, Vec<LogInfo>>> = HashMap::new();
+
+    // Deduplicate logs by repoName and typeName
+    let mut dedup_map: HashMap<String, HashMap<String, HashSet<String>>> = HashMap::new();
 
     for repo_dir in &config.repos {
         // Get repo name
@@ -60,12 +66,23 @@ fn run(root_path: PathBuf) -> Result<(), Box<dyn std::error::Error>> {
         for log in filtered_logs {
             let log_info = format_log(&log);
             let type_name = log_info.type_name.clone();
-            result
+
+            // get HashSet of type_name in repo_name, if not exist, create a new one
+            let type_set = dedup_map
                 .entry(repo_name.clone())
                 .or_default()
-                .entry(type_name)
-                .or_default()
-                .push(log_info);
+                .entry(type_name.clone())
+                .or_default();
+
+            // if message not in type_set, push to result
+            if type_set.insert(log_info.message.clone()) {
+                result
+                    .entry(repo_name.clone())
+                    .or_default()
+                    .entry(type_name)
+                    .or_default()
+                    .push(log_info);
+            }
         }
 
         save_report_markdown(&result, &root_path)?;
