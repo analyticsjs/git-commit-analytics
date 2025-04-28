@@ -1,3 +1,11 @@
+## [2.0.2](https://github.com/analyticsjs/git-commit-analytics/compare/v2.0.1...v2.0.2) (2025-04-28)
+
+
+### Bug Fixes
+
+* **report:** deduplicate commit messages within each group in the report ([e669454](https://github.com/analyticsjs/git-commit-analytics/commit/e669454aaedbf02a2b2db495a9da0b3de3a5908c))
+* **windows:** statically link MSVC CRT to fix missing vcruntime140.dll issue ([097997e](https://github.com/analyticsjs/git-commit-analytics/commit/097997e740a1a333ebd51e16f7a65fd3e9e69c96))
+
 ## [2.0.1](https://github.com/analyticsjs/git-commit-analytics/compare/v2.0.0...v2.0.1) (2025-04-28)
 
 
