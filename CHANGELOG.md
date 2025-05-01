@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/analyticsjs/git-commit-analytics/compare/v2.0.2...v2.0.3) (2025-05-01)
+
+
+### Bug Fixes
+
+* add git availability check with download link ([e2f2ebd](https://github.com/analyticsjs/git-commit-analytics/commit/e2f2ebd43f5df619260dc4935f8b2db2152628ea))
+* **config:** allow optional config fields with default values ([30fac51](https://github.com/analyticsjs/git-commit-analytics/commit/30fac513f72902e12ec575ba46ae3e974ce3cf0f))
+* prevent window from closing immediately on crash by waiting for keypress ([699b999](https://github.com/analyticsjs/git-commit-analytics/commit/699b999a324b6a563636466ed705894c135d0e7b))
+
 ## [2.0.2](https://github.com/analyticsjs/git-commit-analytics/compare/v2.0.1...v2.0.2) (2025-04-28)
 
 
