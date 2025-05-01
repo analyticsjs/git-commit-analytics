@@ -10,6 +10,7 @@ use std::{
 use config::{init_config, print_config};
 use i18n::t;
 use utils::{
+    check_git::check_git_available,
     filter_logs::filter_logs,
     format_log::{format_log, LogInfo},
     get_repo_logs::get_repo_logs,
@@ -24,6 +25,9 @@ fn run(root_path: PathBuf) -> Result<(), Box<dyn std::error::Error>> {
     // and can be accessed from other modules via `config::store::global()`,
     // such as in the i18n module.
     let config = init_config(&root_path)?;
+
+    // Check if git is available
+    check_git_available()?;
 
     print_config();
 
