@@ -1,6 +1,6 @@
 [package]
 authors = ["chengpeiquan <chengpeiquan@chengpeiquan.com>"]
-description = "A tool to analyze your git repository's commit log. I can help you generate daily/weekly or longer work reports."
+description = "A tool for analyzing git commit logs and generating daily, weekly, or custom work reports."
 edition = "2021"
 license = "MIT"
 name = "git-commit-analytics"
