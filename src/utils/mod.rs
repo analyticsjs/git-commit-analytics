@@ -1,3 +1,4 @@
+pub mod check_git;
 pub mod filter_logs;
 pub mod format_commit;
 pub mod format_log;
