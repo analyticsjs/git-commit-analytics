@@ -2,18 +2,15 @@
 
 English | [简体中文](https://github.com/analyticsjs/git-commit-analytics/blob/main/README.zh-CN.md)
 
-A tool to analyze your git repository's commit log. It can help you generate daily/weekly or longer work reports.
+A tool for analyzing git commit logs and generating daily, weekly, or custom work reports.
 
-![git-commit-analytics](https://cdn.chengpeiquan.com/img/2022/01/20220103021254.gif)
+![git-commit-analytics](https://cdn.chengpeiquan.com/img/2025/05/202505020137671.gif?x-oss-process=image/interlace,1)
 
 ## 🚀 Download
 
 This is a client tool, so you need to download the program to use it. See: [The Latest Release](https://github.com/analyticsjs/git-commit-analytics/releases/latest) to download.
 
-Note:
-
-- As the latest version uses a new packaging tool, Windows device testing is currently missing. If you cannot run it, please download the [v1.4.1](https://github.com/analyticsjs/git-commit-analytics/releases/tag/v1.4.1) version of the product
-- The latest version fixes the problem that macOS cannot run the build product, but if you still encounter problems, you can choose to clone the code of this repository and use it through `pnpm i` and `pnpm dev`.
+> Note: This tool requires Git to be installed and properly configured in your system's PATH. Please make sure Git is installed before running the program.
 
 ## ⚡ Usage
 
@@ -26,28 +23,33 @@ You need to create a `config.json` at the same folder with the program, and writ
 ```json
 {
   "lang": "en",
-  "authors": ["chengpeiquan"],
-  "dateRange": ["2021-12-01", "2022-01-31"],
-  "repos": ["D:\\Git\\git-commit-analytics"],
+  "authors": ["my-name"],
+  "dateRange": ["2025-04-01", "2025-05-01"],
+  "repos": ["/path/to/my-project-folder"],
   "format": {
-    "git-commit-analytics": "Git Commit Analytics"
+    "my-project-folder": "My Awesome Project"
   },
   "includes": ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
-  "excludes": ["typo", "backup", "progress"]
+  "excludes": ["typo", "backup"]
 }
 ```
 
+**NOTE：** Please configure the repos path according to your operating system. For example:
+
+- On Windows, you must use backslashes (\), e.g., `D:\\path\\to\\folder-name`
+- On macOS, use forward slashes (/), e.g., `/path/to/folder-name`
+
 The configuration items are described as follows:
 
-|    key    |           type            | description                                                                                                                                                                                |
-| :-------: | :-----------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|   lang    |          string           | Set program default language, support `en` (English) and `zh` (Simplified Chinese).                                                                                                        |
-|  authors  |         string[]          | Filter the author name of commits, support multiple author names, for you may have different names in different repos.                                                                     |
-| dateRange |     [string, string]      | Fill in [start date, end date], support the legal time format, and count from the start date `00:00:00` to the end date `23:59:59`(If not configured, the default day to run the program). |
-|   repos   |         string[]          | The Git repo folder on your computer, need to be switched to the branch you want to count.<br>你电脑里的 Git 仓库文件夹，需要提前切换到你要统计的分支。                                    |
-|  format   | { [key: string]: string } | Format your folder name as the project name.                                                                                                                                               |
-| includes  |         string[]          | The commit message prefix to be included in the statistics.                                                                                                                                |
-| excludes  |         string[]          | In the statistical results, exclude commit messages that contain these keywords.                                                                                                           |
+|    key    |           type            | description                                                                                                                                                                                 |
+| :-------: | :-----------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|   lang    |          string           | Set program default language, support `en` (English, default) and `zh` (Simplified Chinese).                                                                                                |
+|  authors  |         string[]          | Filter commit authors. Supports multiple author names, useful if you use different names in different repositories.                                                                         |
+| dateRange |     [string, string]      | Specify [start date, end date]. Supports valid date formats. The statistics cover from `00:00:00` of the start date to `23:59:59` of the end date. If not set, defaults to the current day. |
+|   repos   |         string[]          | The Git repository folders on your computer. Please switch to the branch you want to analyze in advance.                                                                                    |
+|  format   | { [key: string]: string } | Format your folder names as project names.                                                                                                                                                  |
+| includes  |         string[]          | Commit message prefixes to include in the statistics.                                                                                                                                       |
+| excludes  |         string[]          | Exclude commit messages containing these keywords from the results.                                                                                                                         |
 
 Among them, `authors` / `includes` / `excludes` will be created as regular expressions to match data.
 
