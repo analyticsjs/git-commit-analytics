@@ -126,6 +126,7 @@ fn main() {
     // explicitly with `eprintln!` ensures that the Display output is used.
     if let Err(e) = run(root_path) {
         eprintln!("{}", e); // Use Display format to output the error
+        exit_on_keypress(Some(t("press_to_exit")));
         std::process::exit(1);
     }
 }
