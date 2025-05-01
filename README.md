@@ -4,7 +4,7 @@ English | [简体中文](https://github.com/analyticsjs/git-commit-analytics/blo
 
 A tool for analyzing git commit logs and generating daily, weekly, or custom work reports.
 
-![git-commit-analytics](https://cdn.chengpeiquan.com/img/2025/05/202505020137671.gif?x-oss-process=image/interlace,1)
+![git-commit-analytics](https://cdn.chengpeiquan.com/img/2025/05/202505020137671.gif)
 
 ## 🚀 Download
 

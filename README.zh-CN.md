@@ -4,7 +4,7 @@
 
 一款用于分析 Git 提交日志并生成每日、每周或自定义工作报告的工具。
 
-![git-commit-analytics](https://cdn.chengpeiquan.com/img/2025/05/202505020137671.gif?x-oss-process=image/interlace,1)
+![git-commit-analytics](https://cdn.chengpeiquan.com/img/2025/05/202505020137671.gif)
 
 ## 🚀 下载安装
 
