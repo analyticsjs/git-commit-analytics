@@ -97,9 +97,11 @@ impl fmt::Display for Config {
         for inc in &self.includes {
             writeln!(f, "  - {}", inc)?;
         }
-        writeln!(f, "{}:", t("excludes"))?;
-        for exc in &self.excludes {
-            writeln!(f, "  - {}", exc)?;
+        if !self.excludes.is_empty() {
+            writeln!(f, "{}:", t("excludes"))?;
+            for exc in &self.excludes {
+                writeln!(f, "  - {}", exc)?;
+            }
         }
         writeln!(f, "")?;
         writeln!(f, "--------------------------------")?;
